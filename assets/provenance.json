@@ -712,5 +712,19 @@
     "generator": "ElevenLabs music_v1",
     "brief": "assets/source/combat-audio/boss-battle-request.json",
     "processing": "assets/source/process-combat-audio.py boss-battle"
+  },
+  {
+    "path": "assets/art/forest-sunlit-distance.png",
+    "source": "AI-generated distant background for Mistpaw; user-provided lighting reference",
+    "sha256": "d42e1d60190590d1f22b67eee881124f94c4799d34f22bda0b2235efcedb1eb1",
+    "generator": "OpenAI image generation",
+    "brief": "Distant layered blue-green ancient forest and limestone ravine, mist-filled depth and warm treetops. No foreground platform, bridge, lake, characters, UI or explicit light shafts. Used only as the far parallax layer; lighting, shadows and water remain engine-rendered."
+  },
+  {
+    "path": "assets/art/forest-flagstones.png",
+    "source": "AI-generated using user flagstone detail reference",
+    "sha256": "7baa7fb3106a77736833295fca5a6ce0903ee3161d54c57af5dbe2a9ad8a470e",
+    "generator": "OpenAI image generation",
+    "brief": "Top-down ancient irregular limestone flagstone albedo, chipped edges, wedge repair stones, dark crevices with sparse moss. Neutral illumination, no cast shadows or specular reflections. Runtime lighting and relief provided by Godot material."
   }
 ]

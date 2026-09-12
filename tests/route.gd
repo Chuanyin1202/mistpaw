@@ -14,6 +14,8 @@ func run() -> void:
 	root.close_requested.connect(func():print("ROUTE INTERRUPTED: native window close requested"))
 	var view := SubViewport.new()
 	view.size = Vector2i(1280,720)
+	view.msaa_3d=Viewport.MSAA_4X if RenderingServer.get_current_rendering_method()=="forward_plus" else Viewport.MSAA_DISABLED
+	DirAccess.make_dir_recursive_absolute("res://build/verification/route")
 	view.own_world_3d = true
 	view.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	root.add_child(view)
@@ -118,7 +120,7 @@ func run() -> void:
 			if tick % 600 == 0:
 				print("ROUTE_INPUT tick=",tick," intended=",move," actual=",game.movement_input()," paused=",game.paused," position=",game.hero.position)
 				RenderingServer.force_draw(false)
-				view.get_texture().get_image().save_png("res://docs/route-%d.png" % (tick/600))
+				view.get_texture().get_image().save_png("res://build/verification/route/route-%d.png" % (tick/600))
 				previous_frame = Time.get_ticks_usec()
 		elif tick % 60 == 0: await process_frame
 	print("ROUTE ended=", game.ended, " hp=", game.hp, " room=", game.room, " pickups=", game.pickups, " time=", game.elapsed)
@@ -126,7 +128,7 @@ func run() -> void:
 	if native:
 		await process_frame
 		RenderingServer.force_draw(false)
-		view.get_texture().get_image().save_png("res://docs/route-result.png")
+		view.get_texture().get_image().save_png("res://build/verification/route/route-result.png")
 	var success: bool = game.ended and game.hp > 0 and game.room == 3 and game.pickups == 4
 	if not frame_times.is_empty():
 		frame_times.sort()

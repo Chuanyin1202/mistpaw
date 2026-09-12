@@ -9,9 +9,10 @@ float noise(vec2 p) {
 }
 float waves(vec2 p, float t) {
  float warp=noise(p*0.45+vec2(t*0.035,0.0));
- return sin(p.x*2.8+p.y*5.3+t*0.7+warp*4.0)*0.025
+ return sin(p.x*2.8+p.y*5.3+t*0.7+warp*6.0)*0.025
        +sin(p.x*6.2-p.y*3.7-t*0.52+warp*3.0)*0.012
-       +noise(p*vec2(4.0,11.0)+vec2(t*0.08,-t*0.13))*0.05;
+       +sin(p.x*9.1+p.y*12.7+t*1.1+warp*9.0)*0.003
+       +noise(p*vec2(4.0,11.0)+vec2(t*0.08,-t*0.13))*0.028;
 }
 void vertex() { world_position=(MODEL_MATRIX*vec4(VERTEX,1.0)).xyz; }
 void fragment() {
@@ -25,14 +26,14 @@ void fragment() {
  float shore=bank_x>0.0 ? max(0.0,p.y-2.2) : length(vec2(min(p.x-9.0,21.0-p.x),max(0.0,p.y-2.2)));
  float shallow=exp(-shore*0.8);
  float broad=noise(p*0.22+vec2(TIME*0.012,0));
- ALBEDO=mix(vec3(0.012,0.060,0.067),vec3(0.035,0.115,0.092),shallow*0.65+broad*0.18);
+ ALBEDO=mix(vec3(0.009,0.031,0.049),vec3(0.020,0.083,0.074),shallow*0.65+broad*0.18);
  // Numeric water colors above are linear; Compatibility expects sRGB.
  if (OUTPUT_IS_SRGB) {
   ALBEDO=mix(ALBEDO*12.92,1.055*pow(ALBEDO,vec3(1.0/2.4))-0.055,step(vec3(0.0031308),ALBEDO));
   // Match the muted forest reflection without Forward+ screen-space reflections.
   ALBEDO=mix(vec3(dot(ALBEDO,vec3(0.2126,0.7152,0.0722))),ALBEDO,0.80)*0.84;
  }
- ROUGHNESS=(OUTPUT_IS_SRGB ? 0.32 : 0.18)+noise(p*1.5)*0.09;
- METALLIC=0.25;
- SPECULAR=0.75;
+ ROUGHNESS=(OUTPUT_IS_SRGB ? 0.16 : 0.075)+noise(p*1.5)*0.035;
+ METALLIC=0.05;
+ SPECULAR=0.85;
 }

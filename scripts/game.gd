@@ -160,12 +160,12 @@ func _ready() -> void:
 	add_child(readability)
 	var lens := CameraAttributesPractical.new()
 	lens.dof_blur_far_enabled = RenderingServer.get_current_rendering_method() != "gl_compatibility"
-	lens.dof_blur_far_distance = 25.74
+	lens.dof_blur_far_distance = 38.0
 	lens.dof_blur_far_transition = 18.0
 	lens.dof_blur_near_enabled = RenderingServer.get_current_rendering_method() != "gl_compatibility"
 	lens.dof_blur_near_distance = 18.74
 	lens.dof_blur_near_transition = 4.0
-	lens.dof_blur_amount = 0.028
+	lens.dof_blur_amount = 0.012
 	camera.attributes = lens
 	make_hud()
 	var preferences:=ConfigFile.new()

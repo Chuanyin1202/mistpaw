@@ -1,6 +1,7 @@
 extends SceneTree
 func _initialize():call_deferred("run")
 func run():
+ DirAccess.make_dir_recursive_absolute("res://build/verification")
  root.size=Vector2i(1280,720)
  root.always_on_top=true
  var g=load("res://scenes/main.tscn").instantiate()
@@ -44,7 +45,7 @@ func run():
   report.append(row)
   print("QUALITY ",JSON.stringify(row))
   RenderingServer.force_draw(false)
-  root.get_texture().get_image().save_png("res://docs/quality-crowd-"+str(mode)+".png")
+  root.get_texture().get_image().save_png("res://build/verification/quality-crowd-"+str(mode)+".png")
  var file=FileAccess.open("res://build/verification/quality-benchmark.json",FileAccess.WRITE)
  file.store_string(JSON.stringify(report,"  "))
  for c in g.get_children():

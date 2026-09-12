@@ -15,6 +15,8 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect.web="expand"
 
 [rendering]
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/msaa_3d.web=0
 renderer/rendering_method="forward_plus"
 renderer/rendering_method.web="gl_compatibility"
 renderer/rendering_method.mobile="mobile"

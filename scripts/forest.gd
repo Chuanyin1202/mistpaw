@@ -3,6 +3,7 @@ var environment:Environment
 ## Perspective diorama: physical lane, lit cutouts, distant forest and depth haze.
 var atmosphere:Node3D
 const TEXTURES = {
+ "forest-sunlit-distance.png": preload("res://assets/art/forest-sunlit-distance.png"),
  "stone-flight.png": preload("res://assets/art/stone-flight.png"),
  "cat-combo-sweep.png": preload("res://assets/art/cat-combo-sweep.png"),
  "cat-combo-thrust.png": preload("res://assets/art/cat-combo-thrust.png"),
@@ -75,14 +76,14 @@ func _ready() -> void:
 	add_child(atmosphere)
 	var world_environment := WorldEnvironment.new()
 	var env := Environment.new()
-	env.background_mode = Environment.BG_COLOR
+	env.background_mode = Environment.BG_SKY
 	env.background_color = Color("253d43")
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color("a4bdc3")
-	env.ambient_light_energy = 0.28
+	env.ambient_light_color = Color("a1c4dd")
+	env.ambient_light_energy = 0.32
 	env.fog_enabled = true
-	env.fog_light_color = Color("779997")
-	env.fog_density = 0.002
+	env.fog_light_color = Color("afcbd0")
+	env.fog_density = 0.0014
 	env.fog_sky_affect = 0.0
 	env.volumetric_fog_enabled = not compatibility
 	env.volumetric_fog_density = 0.0
@@ -95,8 +96,8 @@ func _ready() -> void:
 	env.ssr_enabled = not compatibility
 	env.ssr_max_steps = 48
 	var sky_material := ProceduralSkyMaterial.new()
-	sky_material.sky_top_color = Color("496775")
-	sky_material.sky_horizon_color = Color("9cafab")
+	sky_material.sky_top_color = Color("719bbf")
+	sky_material.sky_horizon_color = Color("d0dfdf")
 	sky_material.ground_bottom_color = Color("122e2b")
 	sky_material.ground_horizon_color = Color("72877d")
 	var reflection_sky := Sky.new()
@@ -104,8 +105,8 @@ func _ready() -> void:
 	env.sky = reflection_sky
 	env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
 	env.ssao_enabled = true
-	env.ssao_radius = 1.0
-	env.ssao_intensity = 1.3
+	env.ssao_radius = 0.65
+	env.ssao_intensity = 1.1
 	env.tonemap_mode = Environment.TONE_MAPPER_ACES
 	# Compatibility lights in a different color pipeline. Calibrated against
 	# the same seeded Forward+ scene; HUD colors remain outside this grading.
@@ -117,25 +118,39 @@ func _ready() -> void:
 	world_environment.environment = env
 	add_child(world_environment)
 	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-40, -25, 0)
-	sun.light_color = Color("ffe6b1")
-	sun.light_energy = 0.63 if compatibility else 0.9
+	sun.name = "ForestSun"
+	sun.rotation_degrees = Vector3(-52, -145, 0)
+	sun.light_color = Color("fff0d2")
+	sun.light_energy = 1.0 if compatibility else 1.7
 	sun.shadow_enabled = true
-	sun.light_volumetric_fog_energy = 0.15
+	sun.light_volumetric_fog_energy = 0.7
+	sun.directional_shadow_max_distance = 65.0
+	sun.shadow_blur = 1.5
+	sun.shadow_bias = 0.15 if compatibility else 0.1
+	sun.shadow_normal_bias = 2.5 if compatibility else 2.0
 	add_child(sun)
+	# Soft sky bounce keeps camera-facing sprites readable against the sun.
+	var bounce := DirectionalLight3D.new()
+	bounce.name = "ForestSkyBounce"
+	bounce.rotation_degrees = Vector3(-35,-30,0)
+	bounce.light_color = Color("c7dcdf")
+	bounce.light_energy = 0.65 if compatibility else 0.95
+	bounce.light_volumetric_fog_energy = 0.0
+	bounce.shadow_enabled = false
+	add_child(bounce)
 	# Sun breaks through a canopy opening; actual lights illuminate the bridge
 	# and scatter in localized air, instead of screen-space decorative streaks.
 	if not compatibility:
 		var air := FogVolume.new()
 		air.name = "BridgeAir"
-		air.size = Vector3(29,14,17)
-		air.position = Vector3(15,3,-6)
+		air.size = Vector3(78,14,12)
+		air.position = Vector3(24,4,-8)
 		var mist := FogMaterial.new()
-		mist.density = 0.035
-		mist.albedo = Color("aabdc1")
+		mist.density = 0.024
+		mist.albedo = Color("c5dadd")
 		air.material = mist
 		add_child(air)
-	for opening in [Vector3(5,13,-5),Vector3(18,15,-8)]:
+	for opening in [Vector3(5,13,-5),Vector3(18,15,-8),Vector3(31,14,-7),Vector3(45,15,-8)]:
 		var ray := SpotLight3D.new()
 		ray.position = opening
 		ray.spot_range = 30
@@ -143,39 +158,41 @@ func _ready() -> void:
 		ray.spot_angle_attenuation = 1.4
 		ray.light_color = Color("ffe8b8")
 		ray.light_energy = (28.0 if opening.x < 10 else 18.0) * (0.70 if compatibility else 1.0)
-		ray.light_volumetric_fog_energy = 3.0
+		ray.light_volumetric_fog_energy = 6.0
 		ray.shadow_enabled = true
+		ray.shadow_bias = 0.1
+		ray.shadow_normal_bias = 2.0
 		ray.light_size = 0.35
 		add_child(ray)
 		ray.look_at(opening+Vector3(8,-15,5))
-	var stone := material(Color("b0b3a5"))
-	stone.albedo_texture = load("res://assets/art/ancient-masonry.png")
-	stone.uv1_triplanar = true
-	stone.uv1_scale = Vector3.ONE * 0.09
+	var stone := ShaderMaterial.new()
+	stone.shader = preload("res://shaders/sunlit_stone.gdshader")
+	stone.set_shader_parameter("stone_texture",preload("res://assets/art/ancient-masonry.png"))
 	var cliff := ShaderMaterial.new()
 	cliff.shader = preload("res://shaders/moss_rock.gdshader")
 	cliff.set_shader_parameter("rock_texture",preload("res://assets/art/forest-strata.png"))
 	cliff.set_shader_parameter("moss_texture",preload("res://assets/art/forest-floor.png"))
 	var moss := material(Color("64774a"))
-	moss.albedo_texture = stone.albedo_texture
+	moss.albedo_texture = preload("res://assets/art/ancient-masonry.png")
 	moss.uv1_triplanar = true
 	moss.uv1_scale = Vector3.ONE * 0.18
 	var earth := ShaderMaterial.new()
 	earth.shader = preload("res://shaders/forest_trail.gdshader")
-	earth.set_shader_parameter("soil",preload("res://assets/art/limestone.png"))
+	earth.set_shader_parameter("soil",preload("res://assets/art/forest-flagstones.png"))
 	earth.set_shader_parameter("vegetation",preload("res://assets/art/forest-floor.png"))
 	# Distant art follows slowly; it never substitutes for the physical lane.
-	var bg := sprite("forest-side-distance.png", Vector3(3, 8, -20), 0.04)
+	var bg := sprite("forest-sunlit-distance.png", Vector3(3, 8, -20), 0.04)
 	bg.name = "Distance"
 	bg.shaded = false
-	bg.modulate = Color(0.65, 0.77, 0.80)
+	bg.modulate = Color(0.97,1.0,1.0)
+	bg.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	var canopy=[Vector3(-7,0.92,-6.9),Vector3(4.5,1.08,-7.7),Vector3(27.5,0.90,-6.1),Vector3(37,1.04,-8.0),Vector3(55,0.86,-6.8)]
 	for i in range(canopy.size()):
 		var place:Vector3=canopy[i]
 		var tree := sprite("cedar-forked.png" if i in [2,4] else "ancient-cedar.png", Vector3(place.x, 4.25*place.y, place.z), 0.007*place.y)
 		tree.alpha_cut = SpriteBase3D.ALPHA_CUT_DISCARD
 		tree.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_DOUBLE_SIDED
-		tree.modulate = Color(0.70,0.80,0.76) if place.z < -7 else Color(0.78,0.86,0.78)
+		tree.modulate = Color(0.90,0.94,0.86) if place.z < -7 else Color(0.98,0.98,0.89)
 		tree.flip_h = i % 2 == 0
 	var banks := preload("res://scripts/riverbanks.gd").new()
 	add_child(banks)
@@ -213,7 +230,8 @@ func _ready() -> void:
 			var x0: float = cuts[segment]
 			var x1: float = cuts[segment+1]
 			var points := [Vector3(x0,0.06,road_back(x0)),Vector3(x1,0.06,road_back(x1)),Vector3(x1,0.06,1.7),Vector3(x0,0.06,1.7)]
-			for index in [0,2,1,0,3,2]:
+			# Godot front faces use clockwise winding when viewed from above.
+			for index in [0,1,2,0,2,3]:
 				path.set_normal(Vector3.UP)
 				path.set_uv(Vector2(points[index].x,points[index].z)*0.5)
 				path.add_vertex(points[index])
@@ -221,7 +239,11 @@ func _ready() -> void:
 		floor_mesh.name = "WideClearing" if span.x < 0 else "WideFarBank"
 		floor_mesh.mesh = path.commit()
 		floor_mesh.material_override = earth
+		# The terrace volume below casts its silhouette. This coplanar surface
+		# only receives shadows, avoiding self-shadow bands in Compatibility.
+		floor_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		add_child(floor_mesh)
+		add_child(preload("res://scripts/flagstone_paving.gd").build(cuts,road_back))
 		for i in range(int(span.x), int(span.y)):
 			for z in [road_back(i+0.5), 1.7]:
 				var block := box(Vector3(i + 0.5, -0.22, z), Vector3(1.05, rng.randf_range(0.4, 0.65), 0.85), stone)
@@ -308,6 +330,23 @@ func _ready() -> void:
 			leaves.set_shader_parameter("sway",0.035 if child.texture==TEXTURES["forest-ferns.png"] else 0.085)
 			foliage_materials[key]=leaves
 		child.material_override=foliage_materials[key]
+	# Offscreen canopy geometry casts real moving, alpha-tested shadows.
+	# These meshes only enter the shadow pass; the existing visible trees remain.
+	var canopy_shadow:=ShaderMaterial.new()
+	canopy_shadow.shader=preload("res://shaders/canopy_shadow.gdshader")
+	canopy_shadow.set_shader_parameter("canopy",TEXTURES["ancient-cedar.png"])
+	for x in [-7.0,4.0,26.0,36.0,48.0,58.0]:
+		var shade:=MeshInstance3D.new()
+		shade.name="CanopyShade"
+		var crown:=PlaneMesh.new()
+		crown.size=Vector2(10,8)
+		shade.mesh=crown
+		# The sun comes from behind the bank, projecting crown shadows
+		# forward across the terrace and reflecting toward the camera.
+		shade.position=Vector3(x-3.0,8.0,-5.0)
+		shade.material_override=canopy_shadow
+		shade.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+		add_child(shade)
 
 func follow_camera(x: float) -> void:
 	get_node("Distance").position.x = 3 + (x - 3) * 0.94

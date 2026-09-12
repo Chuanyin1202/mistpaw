@@ -1,4 +1,5 @@
 shader_type spatial;
+#include "surface_relief.gdshaderinc"
 uniform sampler2D rock_texture : source_color, filter_linear_mipmap, repeat_enable;
 uniform sampler2D moss_texture : source_color, filter_linear_mipmap, repeat_enable;
 varying vec3 world;
@@ -15,4 +16,5 @@ void fragment(){
  float mineral=0.93+0.07*sin(world.x*0.48+world.y*0.65+sin(world.z));
  ALBEDO=mix(rock*vec3(0.82,0.85,0.77)*strata,green*0.75,moss)*(1.0-wet*0.42)*mineral;
  ROUGHNESS=mix(0.93,0.38,wet);
+ NORMAL=surface_relief(NORMAL,VERTEX,dot(rock,vec3(0.2126,0.7152,0.0722)),0.012);
 }
