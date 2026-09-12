@@ -6,3 +6,5 @@ __pycache__/
 
 # Large locally generated demo recordings stay outside the source snapshot.
 docs/*.mp4
+docs/*.png
+docs/*.csv
