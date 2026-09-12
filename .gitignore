@@ -2,6 +2,7 @@
 build/
 *.log
 .DS_Store
+__pycache__/
 
 # Large locally generated demo recordings stay outside the source snapshot.
 docs/*.mp4
