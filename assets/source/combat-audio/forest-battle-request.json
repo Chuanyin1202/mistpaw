@@ -1,0 +1,6 @@
+{
+  "prompt": "Instrumental fantasy action game music for a swift sword-wielding cat adventuring across a misty ancient Chinese forest bridge. Nimble pipa ostinato, guqin accents, agile bowed strings, airy dizi melody, restrained low hand drums, around 132 BPM. A lyrical memorable heroic motif and steady forward motion with breathing room for sword impacts. Start with the rhythmic motif immediately, develop lightly, no huge trailer braams, no vocals or choir, no rock guitar, no silence break. A cohesive 60 second exploration-battle cue, lively and mysterious rather than meditative. Gentle final resolution.",
+  "music_length_ms": 60000,
+  "force_instrumental": true,
+  "model_id": "music_v1"
+}

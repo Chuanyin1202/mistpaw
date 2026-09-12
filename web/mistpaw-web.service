@@ -1,0 +1,18 @@
+[Unit]
+Description=Mistpaw Web game assets
+After=network.target
+
+[Service]
+Type=simple
+User=mistpaw
+WorkingDirectory=/srv/mistpaw
+ExecStart=/usr/bin/python3 /srv/mistpaw/serve.py --root /srv/mistpaw/current --port 8095 --bind 127.0.0.1
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+
+[Install]
+WantedBy=multi-user.target

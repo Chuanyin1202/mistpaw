@@ -1,0 +1,65 @@
+{
+  "blade-contact": {
+    "source_peak": 1.0307475328445435,
+    "lowpass_hz": 6500,
+    "trim_lead_seconds": 0.0,
+    "duration_seconds": 0.24,
+    "peak": 0.5
+  },
+  "blade-weight": {
+    "source_peak": 1.3107590675354004,
+    "lowpass_hz": 4500,
+    "trim_lead_seconds": 0.0,
+    "duration_seconds": 0.34,
+    "peak": 0.4999999701976776
+  },
+  "stone-contact": {
+    "source_peak": 1.391442894935608,
+    "trim_lead_seconds": 0.0,
+    "duration_seconds": 0.23,
+    "peak": 0.3380100131034851
+  },
+  "wave-air": {
+    "source_peak": 0.9956911206245422,
+    "trim_lead_seconds": 0.0,
+    "duration_seconds": 0.26,
+    "peak": 0.5
+  },
+  "chain-snap": {
+    "source_peak": 0.9051492810249329,
+    "lowpass_hz": 8000,
+    "trim_lead_seconds": 0.0004761904761904762,
+    "duration_seconds": 0.19,
+    "peak": 0.4999999701976776
+  },
+  "vital-arrival": {
+    "source_peak": 0.8479928970336914,
+    "trim_lead_seconds": 0.0,
+    "duration_seconds": 0.3,
+    "peak": 0.5
+  },
+  "boss-rage": {
+    "source_peak": 1.2580324411392212,
+    "trim_lead_seconds": 0.0,
+    "duration_seconds": 0.8,
+    "peak": 0.5
+  },
+  "boss-charge": {
+    "source_peak": 1.3505135774612427,
+    "trim_lead_seconds": 0.0,
+    "duration_seconds": 0.4,
+    "peak": 0.4999999701976776
+  },
+  "boss-slam": {
+    "source_peak": 0.8753034472465515,
+    "trim_lead_seconds": 0.0,
+    "duration_seconds": 0.5,
+    "peak": 0.5
+  },
+  "boss-fracture": {
+    "source_peak": 1.5125408172607422,
+    "trim_lead_seconds": 0.0,
+    "duration_seconds": 1.15,
+    "peak": 0.5
+  }
+}

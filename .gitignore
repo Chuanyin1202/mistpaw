@@ -1,0 +1,7 @@
+.godot/
+build/
+*.log
+.DS_Store
+
+# Large locally generated demo recordings stay outside the source snapshot.
+docs/*.mp4

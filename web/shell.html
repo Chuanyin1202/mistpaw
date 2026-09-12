@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07171b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="霧爪">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<title>霧爪 Mistpaw｜高速動作刷寶試玩</title>
+<meta name="description" content="化身貓劍客，踏入青霧林。連斬、閃躲、兩段跳與法寶流派，體驗 HD-2D 風格的高速動作刷寶。">
+<link rel="canonical" href="https://mistpaw.eighti.app/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="霧爪 Mistpaw">
+<meta property="og:title" content="霧爪 Mistpaw｜青霧林 · 一劍入霧">
+<meta property="og:description" content="化身貓劍客，連斬、閃躲、兩段跳，挑戰青霧林妖王。HD-2D 風格高速動作刷寶，立即開啟網頁試玩。">
+<meta property="og:url" content="https://mistpaw.eighti.app/">
+<meta property="og:image" content="https://mistpaw.eighti.app/mistpaw-og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="霧爪 Mistpaw：青霧繚繞的貓劍客與金色遊戲標誌">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="霧爪 Mistpaw｜青霧林 · 一劍入霧">
+<meta name="twitter:description" content="HD-2D 風格高速動作刷寶，化身貓劍客挑戰青霧林。">
+<meta name="twitter:image" content="https://mistpaw.eighti.app/mistpaw-og.png">
+<style>
+* { box-sizing: border-box; }
+html,body { width:100%; height:100%; margin:0; overflow:hidden; background:#050d10; color:#e9e4cb; }
+body { display:grid; place-items:center; font-family:"PingFang TC","Microsoft JhengHei",sans-serif; }
+#stage { position:relative; width:min(1280px,100vw,177.7778vh); width:min(1280px,100vw,177.7778dvh); aspect-ratio:16/9; overflow:hidden; background:#07171b; }
+#canvas { display:block; width:100%!important; height:100%!important; outline:none; touch-action:none; }
+#status { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:radial-gradient(ellipse at 50% 40%,#1d3a3b 0%,#0b2027 40%,#050d10 85%); text-align:center; }
+#status::before { content:""; position:absolute; inset:22px; border:1px solid #b9a46a38; pointer-events:none; }
+.game-logo { width:min(560px,60%); height:auto; max-height:62%; object-fit:contain; margin:-10px 0 0; }
+.subtitle { font-size:13px; letter-spacing:.18em; color:#91aba6; margin:0 0 22px; }
+progress { width:min(260px,48vw); height:3px; border:0; appearance:none; background:#28403f; accent-color:#cab47b; }
+progress::-webkit-progress-bar { background:#28403f; }
+progress::-webkit-progress-value { background:#cab47b; }
+progress::-moz-progress-bar { background:#cab47b; }
+#message { margin:14px 24px 0; font-size:13px; line-height:1.7; color:#adbcb3; max-width:36em; }
+#start { margin-top:20px; border:1px solid #bcaa73; background:#132d30; color:#e9dfbe; padding:12px 38px; font:inherit; letter-spacing:.15em; cursor:pointer; }
+#start:hover,#start:focus-visible { background:#284447; outline:2px solid #e9dfbe; outline-offset:4px; }
+[hidden] { display:none!important; }
+@media(max-height:460px) { .game-logo{max-height:55%} .subtitle{margin-bottom:10px} #start{margin-top:10px;padding:8px 30px} }
+#rotate-hint { display:none; }
+html.touch #stage { width:100vw; height:100dvh; aspect-ratio:auto; }
+html.touch .game-logo { max-height:52%; width:min(500px,65%); }
+html.touch #status { padding: max(16px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left)); }
+html.touch .subtitle { margin-bottom:12px; }
+html.touch #message { margin-top:8px; }
+html.touch #start { margin-top:10px; }
+html.touch #status::before { inset:12px; }
+@media(orientation:portrait) {
+ html.touch .game-logo { width:88%; max-height:44%; }
+ html.touch #status { gap:10px; }
+ html.touch #message { max-width:24em; }
+ html.touch.playing #rotate-hint { position:absolute; inset:0; display:grid; place-items:center; z-index:5; background:#07171b; color:#e9dfbe; text-align:center; padding:32px; }
+}
+</style>
+$GODOT_HEAD_INCLUDE
+</head>
+<body>
+<main id="stage">
+<canvas id="canvas" width="1280" height="720" tabindex="0" aria-label="霧爪遊戲畫面">此瀏覽器不支援遊戲畫布。</canvas>
+<section id="status" aria-label="載入霧爪">
+<img class="game-logo" src="mistpaw-logo.png" width="1536" height="1024" alt="霧爪 MISTPAW — 貓劍客與青霧徽章">
+<p class="subtitle">青霧林 · 一劍入霧</p>
+<progress id="progress" aria-label="遊戲下載進度"></progress>
+<p id="message" role="status" aria-live="polite">正在準備試煉…</p>
+<button id="start" hidden>開始試煉</button>
+</section>
+<div id="rotate-hint">請將手機橫放<br>橫放後按「繼續探索」</div>
+</main>
+<noscript>請啟用 JavaScript 後開始遊戲。</noscript>
+<script src="$GODOT_URL"></script>
+<script>
+const config = $GODOT_CONFIG;
+const pack = config.mainPack || `${config.executable}.pck`;
+let downloadComplete = false;
+window.mistpawErrors = [];
+window.mistpawBoot = [];
+if(new URLSearchParams(location.search).has('touch_probe')) {
+  let lastSend=0;
+  window.mistpawTouchProbe=(sample)=>{
+    sample.revision += new URLSearchParams(location.search).has("source") ? ":desktop-check" : ":phone-check";
+    window.mistpawTouchState=sample;
+    if(performance.now()-lastSend<500)return;
+    lastSend=performance.now();
+    navigator.sendBeacon('/debug/touch',new Blob([JSON.stringify(sample)],{type:'application/json'}));
+  };
+}
+const engine = new Engine({...config, canvasResizePolicy:0,
+  onPrint:(...args)=>{const line=args.join(" ");if(line.startsWith("BOOT")){window.mistpawBoot.push({ms:performance.now(),line});showBootStage(line);}console.log(...args);},
+  onPrintError:(...args)=>{window.mistpawErrors.push(args.join(' '));console.error(...args);},
+  onProgress:(current,total) => {
+  if(total>0 && !downloadComplete) {progress.max=total;progress.value=current;message.textContent="正在載入青霧林… "+Math.floor(current/total*100)+"%";}
+}});
+const canvas = document.getElementById('canvas');
+const touchDevice = matchMedia('(pointer:coarse)').matches || navigator.maxTouchPoints>0;
+document.documentElement.classList.toggle('touch',touchDevice);
+function sizeCanvas() {
+  if(touchDevice) {
+    const r=document.getElementById('stage').getBoundingClientRect();
+    // Keep 720px vertical detail in landscape; extend the view instead of stretching 16:9.
+    const scale=720/Math.min(r.width,r.height);
+    canvas.width=Math.round(r.width*scale);canvas.height=Math.round(r.height*scale);
+  } else { canvas.width=1280;canvas.height=720; }
+}
+new ResizeObserver(sizeCanvas).observe(document.getElementById('stage'));
+sizeCanvas();
+const progress = document.getElementById('progress');
+const message = document.getElementById('message');
+const start = document.getElementById('start');
+function showBootStage(line) {
+  const status=document.getElementById('status');
+  if(!status)return;
+  const stages=[['ready-start','建立青霧林場景…'],['scene-built','準備光影與戰鬥材質…'],['initial-materials','準備主角動作…'],['hero-materials','準備敵人與招式…'],['warmup-finished','即將開始試煉…']];
+  for(const [key,label] of stages)if(line.includes(key))message.textContent=label;
+  if(line.includes('playable')) {
+    document.documentElement.classList.add('playing');
+    status.remove();canvas.focus();
+  }
+}
+function failure(error) {
+  window.mistpawErrors.push(String(error));
+  message.textContent = '無法啟動試煉。請重新整理後再試。\n' + String(error);
+  progress.hidden = true;
+}
+const missing = Engine.getMissingFeatures({threads:$GODOT_THREADS_ENABLED});
+if (missing.length) {
+  failure('瀏覽器缺少：' + missing.join(', '));
+} else {
+  // Download before the click; start audio and rendering from a user gesture.
+  Promise.all([engine.init(config.executable), engine.preloadFile(pack,pack)]).then(() => {
+    window.mistpawBoot.push({ms:performance.now(),line:"download-and-wasm-ready"});
+    downloadComplete=true;
+    progress.hidden=true;
+    message.textContent=touchDevice?'請橫放遊玩 · 左側搖桿移動 · 持續推動加速 · 點法寶切換流派':'WASD 移動 · J 連斬 · K 重劈 · I 旋斬 · L 閃躲 · 空白鍵跳躍';
+    start.hidden=false;
+    start.focus();
+  }).catch(failure);
+  start.addEventListener('click', async () => {
+    window.mistpawBoot.push({ms:performance.now(),line:"start-click"});
+    start.disabled=true;
+    start.textContent='正在準備…';
+    message.textContent='正在建立場景，首次啟動需要一點時間…';
+    progress.hidden=false;progress.removeAttribute('value');
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    engine.start({canvas,args:["--main-pack",pack,...config.args],onPrintError:(...args)=>{window.mistpawErrors.push(args.join(' '));console.error(...args);}}).catch(failure);
+  }, {once:true});
+}
+</script>
+</body>
+</html>

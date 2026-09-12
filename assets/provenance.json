@@ -1,0 +1,716 @@
+[
+  {
+    "path": "assets/art/cat-heavy-cleave.png",
+    "source": "../onepaw/public/art/cat-heavy-cleave.png",
+    "sha256": "52bf3e26d03f406ac15b0df4ddfc5fbc2f620a3341fc65a7f7856d91b7f0f3be"
+  },
+  {
+    "path": "assets/art/cat-rush.png",
+    "source": "../onepaw/public/art/cat-rush.png",
+    "sha256": "98a39f80a5ec4717d36a3bbebd8b50ad65023fb447fea2dcf75f5b3115cf10c2"
+  },
+  {
+    "path": "assets/art/grass-rat.png",
+    "source": "../onepaw/public/art/grass-rat.png",
+    "sha256": "4ec8049d921ad4db15b93c4447339e6083d04e41969b54e40e2cc236d84e74f7"
+  },
+  {
+    "path": "assets/art/beast-stone-toad.png",
+    "source": "../onepaw/public/art/beast-stone-toad.png",
+    "sha256": "af09013a5024725936041c774f4ec0d809cdba675fe149f40fb360857a2885c4"
+  },
+  {
+    "path": "assets/art/beast-wind-weasel.png",
+    "source": "../onepaw/public/art/beast-wind-weasel.png",
+    "sha256": "db95913c6fa9b13effa8803ae7d0129c7c0e1e2e69665a48b927f4a55a172d1a"
+  },
+  {
+    "path": "assets/art/elite-grass-rat.png",
+    "source": "../onepaw/public/art/elite-grass-rat.png",
+    "sha256": "017a4cda5cafb21a58efcb7dffa018c5e54d9caf46149f28aecdd16af900b2d4"
+  },
+  {
+    "path": "assets/art/boss-grass-rat.png",
+    "source": "../onepaw/public/art/boss-grass-rat.png",
+    "sha256": "54c06e80c5d9224df3b60b627c566ce24a29f964fff453ec3cbe192e7c7418a2"
+  },
+  {
+    "path": "assets/art/gear-atlas.png",
+    "source": "../onepaw/public/art/gear-atlas.png",
+    "sha256": "b46ca291a071bfdd9d4fc7ced43519261970f09648ae08c2131a0534d88b345e"
+  },
+  {
+    "path": "assets/art/forest-distance.png",
+    "source": "../onepaw/public/art/forest-distance.png",
+    "sha256": "ee4b7d196c4962b76782f1071a64840782766992088210a2be5307867c28bf3e"
+  },
+  {
+    "path": "assets/art/forest-ferns.png",
+    "source": "../onepaw/public/art/forest-ferns.png",
+    "sha256": "6fd4a1c85bf6390967e58f1bca76eff39d76877afe1c6067cbe186717dc3f9e7"
+  },
+  {
+    "path": "assets/art/limestone.png",
+    "source": "../onepaw/public/art/limestone.png",
+    "sha256": "1f8cb187030c7be4095d02190e9a562c19c09b315b9dbf99af37ebfc69c09dca"
+  },
+  {
+    "path": "assets/audio/hit-light.mp3",
+    "source": "../onepaw/public/audio/hit-light.mp3",
+    "sha256": "14db73df5c7de148c40ef6b85d4e4d679ce0a0c97fb41b1873dcca72568ce831"
+  },
+  {
+    "path": "assets/audio/hit-heavy.mp3",
+    "source": "../onepaw/public/audio/hit-heavy.mp3",
+    "sha256": "33ce4ed13fd438abd051f20cb1bcdd323ae7ebd08134946b6092817e0b853ae8"
+  },
+  {
+    "path": "assets/audio/beast-down.mp3",
+    "source": "../onepaw/public/audio/beast-down.mp3",
+    "sha256": "f4f108426a63270ae73babaf789c70afb0858fbac84f67f0925cd67c42d2db94"
+  },
+  {
+    "path": "assets/audio/stage-clear.mp3",
+    "source": "../onepaw/public/audio/stage-clear.mp3",
+    "sha256": "9e06345deac2042066b1cad8485ba0a7c9f36ef072a1f82d91ec6ff2cba193e2"
+  },
+  {
+    "path": "assets/audio/bgm-greenmist.mp3",
+    "source": "../onepaw/public/audio/bgm-greenmist.mp3",
+    "sha256": "ba1b929af5a294c9020e28344f5b9ac5fba2be3040a9048b93c01b352116a001"
+  },
+  {
+    "path": "assets/art/forest-side-distance.png",
+    "source": "built-in image_gen; assets/source/generation-prompts.json",
+    "sha256": "45b16f74099acf6609bde1f613e69ad0a5a5393f16b161fd94d36972474b7a5a",
+    "processing": "original generated RGBA preserved; slash uses additive blending"
+  },
+  {
+    "path": "assets/art/ancient-masonry.png",
+    "source": "built-in image_gen; assets/source/generation-prompts.json",
+    "sha256": "624734f0f1da4beaede898b46891f983a8ad68b00b1f5a05d4e2e553e15a1159",
+    "processing": "original generated RGBA preserved; slash uses additive blending"
+  },
+  {
+    "path": "assets/art/ancient-cedar.png",
+    "source": "built-in image_gen; assets/source/generation-prompts.json",
+    "sha256": "acbfeeb0465e016190efc67194709b02bc3e16416462db5e2644eb7b0ed7fe5a",
+    "processing": "original generated RGBA preserved; slash uses additive blending"
+  },
+  {
+    "path": "assets/art/cat-walk.png",
+    "source": "built-in image_gen; assets/source/generation-prompts.json",
+    "sha256": "388a733f786d68f9dff81a5364a1039cefde89545bed860d62bde81a8b9c3073",
+    "processing": "sprite-forge preserve / shared anchor / 2x2 / 192px; see assets/source/cat-walk/pipeline-meta.json"
+  },
+  {
+    "path": "assets/art/slash-down.png",
+    "source": "built-in image_gen; assets/source/generation-prompts.json",
+    "sha256": "cc8ac77d864073b4f3334eb50cadfb9353550cbb3848b1f0371d7925e083d401",
+    "processing": "original generated RGBA preserved; slash uses additive blending"
+  },
+  {
+    "path": "assets/art/forest-strata.png",
+    "source": "built-in image_gen, original generated texture",
+    "sha256": "6156119f0d8be5da8fd6fed9f591498b3797d06b37cdc5afe54d101fbab42a1b",
+    "purpose": "Natural stratified pixel-art rock, separate from masonry bridge",
+    "prompt_record": "assets/source/forest-strata-prompt.txt"
+  },
+  {
+    "path": "assets/art/forest-floor.png",
+    "source": "built-in image_gen, original generated texture",
+    "sha256": "8eee76da2e020f737acd36c34e1dbb3fbd325edab14c725c96ffb60347d6491a",
+    "prompt_record": "assets/source/forest-floor-prompt.txt"
+  },
+  {
+    "path": "assets/art/cedar-forked.png",
+    "source": "built-in image_gen, style reference ancient-cedar.png",
+    "sha256": "b1d221280cd68292c211e6637f5e3e10df7037c823765e8cbdd4d0026248e31f",
+    "prompt_record": "assets/source/cedar-forked-prompt.txt",
+    "qc": {
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        26,
+        17,
+        1226,
+        1243
+      ],
+      "edge_touch": false,
+      "transparent_fraction": 0.528
+    }
+  },
+  {
+    "path": "assets/art/cat-cut-eight.png",
+    "source": "image_gen split 2x2 sheets, sprite-forge process then deterministic 2x4 atlas assembly",
+    "sha256": "f5552444e1a2c11c0575e98570ecbe8d5311e57f997dcf4ca640e412f37491e8",
+    "raw_sources": [
+      "assets/source/cat-attack-a/raw-sheet.png",
+      "assets/source/cat-attack-b/raw-sheet.png"
+    ],
+    "qc": [
+      "assets/source/cat-attack-a/pipeline-meta.json",
+      "assets/source/cat-attack-b/pipeline-meta.json"
+    ],
+    "scale_drift_from_walk": [
+      0.01264,
+      -0.00088
+    ],
+    "layout": "2 columns x 4 rows; 192px cells; contact frame index 4"
+  },
+  {
+    "path": "assets/art/cat-jump.png",
+    "source": "built-in image_gen + sprite-forge preserve/shared-anchor",
+    "sha256": "04562994b24f17077b08fa1bbf558b95dd5359609656113e186f838b6d3b4e36",
+    "raw_source": "assets/source/cat-jump-v3/raw-sheet.png",
+    "qc": "assets/source/cat-jump-v3/pipeline-meta.json",
+    "prompt_record": "assets/source/jump-prompt.txt"
+  },
+  {
+    "path": "assets/art/cat-spin.png",
+    "source": "built-in image_gen + sprite-forge preserve/shared-anchor",
+    "sha256": "03f572146eb0de296eed22d3859eb857e07978a7c0d9da7a6122f88c00378861",
+    "raw_source": "assets/source/cat-spin/raw-sheet.png",
+    "qc": "assets/source/cat-spin/pipeline-meta.json",
+    "prompt_record": "assets/source/spin-prompt.txt"
+  },
+  {
+    "path": "assets/art/rat-run.png",
+    "source": "built-in image_gen + sprite-forge preserve/shared-anchor",
+    "sha256": "6a8878415be16a4205487555943a8c7961c5d63d401e7046aa32fefd95ccfbc5",
+    "raw_source": "assets/source/rat-run/raw-sheet.png",
+    "qc": "assets/source/rat-run/pipeline-meta.json",
+    "prompt_record": "assets/source/rat-run-prompt.txt"
+  },
+  {
+    "path": "assets/art/weasel-run.png",
+    "source": "built-in image_gen + sprite-forge preserve/shared-anchor",
+    "sha256": "0cfce1596108d1d61138023d1b4f894ed14bd376e648e31a16d7fd8db92332e3",
+    "raw_source": "assets/source/weasel-run/raw-sheet.png",
+    "qc": "assets/source/weasel-run/pipeline-meta.json",
+    "prompt_record": "assets/source/weasel-run-prompt.txt"
+  },
+  {
+    "path": "assets/art/spin-ribbon.png",
+    "source": "built-in image_gen original texture, additive rendering",
+    "sha256": "78f0d4ba045caca2585f521a1ed759607e8ee02ffa531a39ea22b07431eb0710",
+    "prompt_record": [
+      "assets/source/spin-fx-prompt.txt",
+      "assets/source/spin-fx-repair-prompt.txt"
+    ],
+    "qc": {
+      "size": [
+        1254,
+        1254
+      ],
+      "visible_bbox_threshold_25": [
+        146,
+        144,
+        1108,
+        1086
+      ],
+      "border_max_rgb": 1
+    }
+  },
+  {
+    "path": "assets/art/cat-heavy-eight.png",
+    "source": "OpenAI image generation; accepted source and QC retained locally",
+    "sha256": "0e9c9108330e8ccdb7cbfdb14af62665b1d7b7aa6ad15d56a901499accc46462",
+    "prompts": [
+      "assets/source/heavy-windup-v3-prompt.txt",
+      "assets/source/heavy-release-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/heavy-windup-v3/pipeline-meta.json",
+      "assets/source/heavy-release/pipeline-meta.json"
+    ]
+  },
+  {
+    "path": "assets/art/boss-claw.png",
+    "source": "OpenAI image generation; accepted source and QC retained locally",
+    "sha256": "b19325298b42ff2baacd37f2fe17c00ffaa6cdca52e42ed8b0b9600f3ffe32cb",
+    "prompts": [
+      "assets/source/boss-claw-prompt.txt",
+      "assets/source/boss-claw-compact-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/boss-claw/pipeline-meta.json"
+    ]
+  },
+  {
+    "path": "assets/art/contact-spark.png",
+    "source": "OpenAI image generation; accepted source and QC retained locally",
+    "sha256": "311019d95fc961a79d5ab8620d57a3892649f91129d35658af5d08b3d4ede68c",
+    "prompts": [
+      "assets/source/contact-spark-prompt.txt"
+    ],
+    "processing": [],
+    "raw_source": "exec-9986fb76-04cb-4d4b-8b46-3bb58b70cecb.png"
+  },
+  {
+    "path": "assets/art/cat-walk-toward.png",
+    "source": "OpenAI image generation; accepted source and strict QC retained locally",
+    "sha256": "23947229307d1c077766e266414ce81825ed28c0762842220c0510055e2491b6",
+    "prompts": [
+      "assets/source/walk-toward-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/walk-toward/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/walk-toward/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/cat-walk-away.png",
+    "source": "OpenAI image generation; accepted source and strict QC retained locally",
+    "sha256": "b53092612c65f04b082f7d733e981abdcc4e052a2ec301b92df50fb663f4b753",
+    "prompts": [
+      "assets/source/walk-away-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/walk-away/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/walk-away/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/cat-run.png",
+    "source": "OpenAI image generation; accepted source and strict QC retained locally",
+    "sha256": "6ca8eec5dd3da8ccd6fb3ed2de05c9cb4f5bddd747a6a88ab1d7b9013e8d7bba",
+    "prompts": [
+      "assets/source/run-four-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/run-four/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/run-four/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/cat-backstep.png",
+    "source": "OpenAI image generation; accepted source and strict QC retained locally",
+    "sha256": "7e86c1bd19b81bc024d44c4ad0806b0130655ad3939ea40aaeac6d68c4be2245",
+    "prompts": [
+      "assets/source/backstep-four-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/backstep-four/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/backstep-four/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/cat-combo-sweep.png",
+    "source": "OpenAI built-in image generation; prompts and accepted processing retained locally",
+    "sha256": "c4390d178438df795e49d93b1573ac34f8df5536d50b9fe0fa33ed31b10eb7cd",
+    "prompts": [
+      "assets/source/combo-sweep-a-prompt.txt",
+      "assets/source/combo-sweep-b-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/combo-sweep-a/pipeline-meta.json",
+      "assets/source/combo-sweep-b/pipeline-meta.json"
+    ],
+    "raw_source": [
+      "assets/source/combo-sweep-a/raw-sheet.png",
+      "assets/source/combo-sweep-b/raw-sheet.png"
+    ]
+  },
+  {
+    "path": "assets/art/cat-combo-thrust.png",
+    "source": "OpenAI built-in image generation; prompts and accepted processing retained locally",
+    "sha256": "2d7e39f93aae3ea2f306b5dbfcbf96927ce99d4d8fdc174cabee43ff42618fd7",
+    "prompts": [
+      "assets/source/combo-thrust-low-a-prompt.txt",
+      "assets/source/combo-thrust-low-b-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/combo-thrust-low-a/pipeline-meta.json",
+      "assets/source/combo-thrust-low-b/pipeline-meta.json"
+    ],
+    "raw_source": [
+      "assets/source/combo-thrust-low-a/raw-sheet.png",
+      "assets/source/combo-thrust-low-b/raw-sheet.png"
+    ]
+  },
+  {
+    "path": "assets/art/thrust-flash.png",
+    "source": "OpenAI built-in image generation; prompts and accepted processing retained locally",
+    "sha256": "ea1e39775aae03bcd861de88b791b2441f581fe51d8d5f1512a806514f6b4400",
+    "prompts": [
+      "assets/source/thrust-flash-prompt.txt"
+    ],
+    "processing": [],
+    "raw_source": "assets/art/thrust-flash.png"
+  },
+  {
+    "path": "assets/art/wave-blade.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "a9db90d1ee9b743c61a8f1c8b189783eb2553e7abd43903f0920f384485f006d",
+    "prompts": [
+      "assets/source/wave-blade-prompt.txt"
+    ],
+    "processing": "original black-background artwork; additive blend with fog disabled",
+    "raw_source": "assets/art/wave-blade.png"
+  },
+  {
+    "path": "assets/art/chain-lightning.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "310c31a42bfd9c65524d503f9f71b7c6ead1e755ade5039439df5d66979fc412",
+    "prompts": [
+      "assets/source/chain-lightning-prompt.txt"
+    ],
+    "processing": "original black-background artwork; additive blend with fog disabled",
+    "raw_source": "assets/art/chain-lightning.png"
+  },
+  {
+    "path": "assets/art/vital-wisp.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "9c3387f30b1ff9453e9fe959d1d225897db62fe265ee0154f50b2e3813d8b3d3",
+    "prompts": [
+      "assets/source/vital-wisp-prompt.txt"
+    ],
+    "processing": "original black-background artwork; additive blend with fog disabled",
+    "raw_source": "assets/art/vital-wisp.png"
+  },
+  {
+    "path": "assets/art/cat-hurt.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "4aa3fa1bf1425d68d9789369692d3cf07c22ffedada3ed2c384c301529644279",
+    "prompts": [
+      "assets/source/cat-hurt-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/cat-hurt/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/cat-hurt/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/cat-fall.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "a51609900aaf75a244ef228ea287727cc96328d62a90d4017ebbfba79745ca34",
+    "prompts": [
+      "assets/source/cat-fall-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/cat-fall/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/cat-fall/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/rat-bite.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "b6470ce838df976ffae293c621bda3854f32d82fa44b11782d26a7e9e99d56f7",
+    "prompts": [
+      "assets/source/rat-bite-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/rat-bite/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/rat-bite/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/weasel-pounce.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "f1d826b4c3ae9bb62424f39742902d9f2fdb6feaa455b5a98aa3c5d84d860074",
+    "prompts": [
+      "assets/source/weasel-pounce-prompt.txt",
+      "assets/source/weasel-pounce-compact-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/weasel-pounce/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/weasel-pounce/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/toad-spit.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "c55053f96b99cc645cd18a2d23c23e6ef012655ed929abe3a714fd5449b1caa3",
+    "prompts": [
+      "assets/source/toad-spit-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/toad-spit/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/toad-spit/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/rat-fall.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "49328fd27c1075e44fc72e0690607c4b6f4b1da5db3f7c009601b67b4a56fd4b",
+    "prompts": [
+      "assets/source/rat-fall-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/rat-fall/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/rat-fall/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/weasel-fall.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "f50302c5889ef2b63441be4193b8c77ad8f206e7ffb922eafb47b3f380b54412",
+    "prompts": [
+      "assets/source/weasel-fall-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/weasel-fall/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/weasel-fall/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/toad-fall.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "8674e46d5797b92fb6da431fb689811309753ca4eb543b88cd6164f40694ab3c",
+    "prompts": [
+      "assets/source/toad-fall-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/toad-fall/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/toad-fall/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/elite-fall.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "8018851b5b5886ca6e740c821d190c8f30b9547c3136d54be27d0b56a881e191",
+    "prompts": [
+      "assets/source/elite-fall-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/elite-fall/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/elite-fall/raw-sheet.png"
+  },
+  {
+    "path": "assets/art/boss-fall.png",
+    "source": "OpenAI built-in image generation; retained prompts and source",
+    "sha256": "ac1af74ceeb84fa0100e8564251f05818f043a84a3412ed0c7a1bd213d120f8c",
+    "prompts": [
+      "assets/source/boss-fall-prompt.txt",
+      "assets/source/boss-fall-compact-prompt.txt"
+    ],
+    "processing": [
+      "assets/source/boss-fall/pipeline-meta.json"
+    ],
+    "raw_source": "assets/source/boss-fall/raw-sheet.png"
+  },
+  {
+    "path": "assets/audio/wave-swish.wav",
+    "source": "assets/source/build-sounds.py; locally synthesized PCM, no sampled source",
+    "sha256": "98b10e27a1de87521189f59f2d8727cc1caa6981cf6ec23299ef31916193b155"
+  },
+  {
+    "path": "assets/audio/lightning-crack.wav",
+    "source": "assets/source/build-sounds.py; locally synthesized PCM, no sampled source",
+    "sha256": "a4f71bc436cd22d5217bac08abd89308622ce3045d4ef2c6bc093bf5f0af948f"
+  },
+  {
+    "path": "assets/audio/vital-return.wav",
+    "source": "assets/source/build-sounds.py; locally synthesized PCM, no sampled source",
+    "sha256": "399c38f5e3de3676bd2cfad673241097ca0dd1208274caeda4c835a7c66c4281"
+  },
+  {
+    "path": "assets/art/elite-maul.png",
+    "source": "OpenAI image generation; retained raw sheet, prompt and game-asset-forge pipeline metadata",
+    "prompt": "assets/source/elite-maul-prompt.txt",
+    "processing": "assets/source/elite-maul/pipeline-meta.json",
+    "sha256": "f767be3c9f46960e4bd2f13347e4ccdba7af965abd1a531ef6172ee183899c1d"
+  },
+  {
+    "path": "assets/art/stone-flight.png",
+    "source": "OpenAI image generation; retained raw sheet, prompt and game-asset-forge pipeline metadata",
+    "prompt": "assets/source/stone-flight-prompt.txt",
+    "processing": "assets/source/stone-flight/pipeline-meta.json",
+    "sha256": "f2e06b27a985425fc65a6e68e3625f8541c04caac9d445f9025b177172d7d34d"
+  },
+  {
+    "path": "assets/audio/blade-contact.wav",
+    "source": "ElevenLabs API, explicitly authorized by user",
+    "request": "assets/source/combat-audio/blade-contact-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "722fca54cf19be7c5ec972191ad9fce398d005a2a20a3972cd60554ad08de17a"
+  },
+  {
+    "path": "assets/audio/blade-weight.wav",
+    "source": "ElevenLabs API, explicitly authorized by user",
+    "request": "assets/source/combat-audio/blade-weight-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "3aa81c080c91648de2d728cb7b1e20019c39489814bbed50025a8278802b02c6"
+  },
+  {
+    "path": "assets/audio/stone-contact.wav",
+    "source": "ElevenLabs API, explicitly authorized by user",
+    "request": "assets/source/combat-audio/stone-contact-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "a387b8db3def0ba54e111d50a3d37ee2bc3e961d67124e438109f55bcc9c5bd3"
+  },
+  {
+    "path": "assets/audio/wave-air.wav",
+    "source": "ElevenLabs API, explicitly authorized by user",
+    "request": "assets/source/combat-audio/wave-air-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "0bf376e26d625f6bcaa0168037ec26598b2d42a72a36102ef011d5cfef6d375b"
+  },
+  {
+    "path": "assets/audio/chain-snap.wav",
+    "source": "ElevenLabs API, explicitly authorized by user",
+    "request": "assets/source/combat-audio/chain-snap-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "801c9977b7d7597f989dc678f450e858381857790a25e0181750a273f77b4286"
+  },
+  {
+    "path": "assets/audio/vital-arrival.wav",
+    "source": "ElevenLabs API, explicitly authorized by user",
+    "request": "assets/source/combat-audio/vital-arrival-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "a6c2bc57dcd63c117a313c541a9eae2e74d6fa3afbc021de80e58dc2b52ae4c5"
+  },
+  {
+    "path": "assets/audio/forest-battle.ogg",
+    "source": "ElevenLabs API, explicitly authorized by user",
+    "request": "assets/source/combat-audio/forest-battle-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "00c064e1fe54bc7ebad95f07906a0a67bee775ccc6db5f9179821d4b86047058"
+  },
+  {
+    "path": "assets/art/boss-charge.png",
+    "source": "OpenAI built-in image generation; identity master and anchor layout reference",
+    "prompt": "assets/source/boss-charge-prompt.txt",
+    "processing": "assets/source/boss-charge/pipeline-meta.json",
+    "sha256": "4d53f091bc0ffe6cccf249e7f1986e5a522a8eeb302be5f45805d2c32c8ef990"
+  },
+  {
+    "path": "assets/art/boss-leap.png",
+    "source": "OpenAI built-in image generation; identity master and anchor layout reference",
+    "prompt": "assets/source/boss-leap-prompt.txt",
+    "processing": "assets/source/boss-leap/pipeline-meta.json",
+    "sha256": "08ee4f7402729802db8708b0ee535a69aecfd301da8e5f83aad471ddc8e948bd"
+  },
+  {
+    "path": "assets/audio/boss-rage.wav",
+    "source": "User-authorized ElevenLabs sound generation",
+    "request": "assets/source/combat-audio/boss-rage-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "61aecd8d64e4386b1fc3b4061656cd51fab4a6d524bc2726980128694a3876ff"
+  },
+  {
+    "path": "assets/audio/boss-charge.wav",
+    "source": "User-authorized ElevenLabs sound generation",
+    "request": "assets/source/combat-audio/boss-charge-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "502533a136c113cca221c33e0f9b64f49272c799d299cb4a801c87dba120be46"
+  },
+  {
+    "path": "assets/audio/boss-slam.wav",
+    "source": "User-authorized ElevenLabs sound generation",
+    "request": "assets/source/combat-audio/boss-slam-request.json",
+    "processing": "assets/source/process-combat-audio.py",
+    "sha256": "e4189b3f893abc7777e913549b9109af3e795ec64619ff19a68b69e5f1eaf66b"
+  },
+  {
+    "path": "assets/art/cat-run-six.png",
+    "source": "assets/source/run-dense-aligned/sheet-transparent.png",
+    "sha256": "a14e5cc50ada35c5ac184d049da0450126d82dd7bd06b5ad91de8889c82c9899"
+  },
+  {
+    "path": "assets/audio/boss-fracture.wav",
+    "source": "assets/source/combat-audio/boss-fracture.mp3",
+    "sha256": "69a1f11178322713ad11a328261c15079fbb9c517cf01b9eff68908aed40af0a"
+  },
+  {
+    "path": "assets/art/cat-idle.png",
+    "source": "assets/source/cat-idle-clean/raw-sheet.png",
+    "reference": "assets/art/cat-cut-eight.png",
+    "description": "八格側面待機，閉眼與輕微衣襬變化；純色去背、全幀單一縮放與腳底對位。",
+    "sha256": "3c6d5602b761c9887040e950ef7b8566b4313e4e11eaa024a7f88ceca77510ff"
+  },
+  {
+    "path": "assets/art/cat-idle-side.png",
+    "source": "assets/source/cat-idle-side/raw-sheet.png",
+    "processing": "assets/source/cat-idle-side/pipeline-meta.json",
+    "description": "八格待機，固定腳底，呼吸、衣襬與尾巴微動；正面與側面短暫閉眼。",
+    "sha256": "0aa0e8d9b03d4604e3d51fd48b36e4e8db56433b244fe027131ca21859156599"
+  },
+  {
+    "path": "assets/art/cat-idle-toward.png",
+    "source": "assets/source/cat-idle-toward/raw-sheet.png",
+    "processing": "assets/source/cat-idle-toward/pipeline-meta.json",
+    "description": "八格待機，固定腳底，呼吸、衣襬與尾巴微動；正面與側面短暫閉眼。",
+    "sha256": "ac4a7c881c355b82ebebf4ac8992e8c01f671231ce1b672011fe38d4ca63c914"
+  },
+  {
+    "path": "assets/art/cat-idle-away.png",
+    "source": "assets/source/cat-idle-away/raw-sheet.png",
+    "processing": "assets/source/cat-idle-away/pipeline-meta.json",
+    "description": "八格待機，固定腳底，呼吸、衣襬與尾巴微動；正面與側面短暫閉眼。",
+    "sha256": "d838e0946062f618902215020b94d0fbf9905995687417c08f48a11cc1a18c49"
+  },
+  {
+    "path": "assets/art/relic-atlas.png",
+    "source": "assets/source/relic-atlas-generated.png",
+    "source_sha256": "2d75657b8731ef605c0eba6fbf080ecb27c1fdaffbc77b095762569c31c84064",
+    "sha256": "f3ec29692ce077f7ea077a58f5b77550e4175baa715c79e8096c21896a07f9b7",
+    "generator": "OpenAI image_gen",
+    "description": "2×2 新法寶：青色波紋玉印、紫晶銅鈴、紅玉曲刃及未使用的綠色徽章；前三格供場景與 HUD。sprite-forge 統一 192px 格位去背，strict QC 通過。"
+  },
+  {
+    "path": "assets/art/blood-ribbon.png",
+    "source": "assets/source/blood-ribbon-generated.png",
+    "source_sha256": "4b1a9335648660308d127c1478b81f248ef314b1077961ad721473693c0c6af7",
+    "sha256": "4b1a9335648660308d127c1478b81f248ef314b1077961ad721473693c0c6af7",
+    "generator": "OpenAI image_gen",
+    "description": "黑底紅金弧形刀光與細血色絲帶，無人物。加色 shader 去除黑底並在邊緣漸隱；原尺寸使用。"
+  },
+  {
+    "path": "assets/art/cat-walk-eight.png",
+    "source": "assets/source/walk-eight-final/raw-sheet.png",
+    "source_sha256": "a19b9183556295b3d3832c3d2fb42e1c9767a3d48342d77ffa5ccc6590138564",
+    "sha256": "26da2575a5e76b655182dec7039d4173eb75529825c2e0d291ff133d76e1043e",
+    "generator": "OpenAI image_gen",
+    "description": "側面八格走路，2列4行。由原四格 walk 身份及固定尺度模板生成，再修正腿部交替。全幀共用 preserve 比例0.90、shared X 與腳底錨；原生固定 y offset=6，角色碰撞位置不動。",
+    "qc": "assets/source/walk-eight-final/pipeline-meta.json"
+  },
+  {
+    "path": "assets/art/cat-walk-contact.png",
+    "source": "assets/source/walk-contact-final/raw-sheet.png",
+    "sha256": "ed6804d4714cab4d21c75d1cceed8788709523ad5759f405e95d676bfaa3441e",
+    "brief": "assets/source/contact-and-medallions.md",
+    "generator": "image_gen"
+  },
+  {
+    "path": "assets/art/action-medallions.png",
+    "source": "external-source/exec-a4e0443f-bfe4-46bd-bd47-67f656fe1690.png",
+    "sha256": "2b05189a83e7bb3250f78576be8ad78816df76ba517abab9b5c0273bae08941c",
+    "brief": "assets/source/contact-and-medallions.md",
+    "generator": "image_gen"
+  },
+  {
+    "path": "assets/art/cat-ready.png",
+    "source": "assets/source/idle-ready-four/raw-sheet.png",
+    "sha256": "94de723b0371b812ff89822a2821763b0a221cb1815030495494e9b1fe040ae1",
+    "brief": "assets/source/feedback-polish.md",
+    "generator": "image_gen + sprite-forge"
+  },
+  {
+    "path": "assets/audio/cooldown-tick.wav",
+    "source": "assets/source/feedback-cues.py",
+    "sha256": "afd63d1359a9a633cedbbfb663608ad67f72072cfe00c11d2efac4374f721f86",
+    "brief": "assets/source/feedback-polish.md",
+    "generator": "deterministic synthesis"
+  },
+  {
+    "path": "assets/audio/guard-clink.wav",
+    "source": "assets/source/feedback-cues.py",
+    "sha256": "82b08e16dac70d1a31ceadc8d4ed11c0d00de0ab2f0b418a6cdf54cb9331270d",
+    "brief": "assets/source/feedback-polish.md",
+    "generator": "deterministic synthesis"
+  },
+  {
+    "path": "assets/audio/boss-battle.ogg",
+    "source": "assets/source/combat-audio/boss-battle.mp3",
+    "sha256": "3f3f5cde511847cbee477b754e38a6b800df1796056d1d26c3a9eeb02bef434e",
+    "generator": "ElevenLabs music_v1",
+    "brief": "assets/source/combat-audio/boss-battle-request.json",
+    "processing": "assets/source/process-combat-audio.py boss-battle"
+  }
+]
