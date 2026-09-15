@@ -1,37 +1,46 @@
-# Mistpaw／霧爪
+# Mistpaw
 
-A playable single-level Godot ARPG experiment: keyboard combat, combo attacks,
-double jumps, dodges, grouped enemies, loot, boss phases and HD-2D-inspired scenery.
-The source code is MIT-licensed; bundled media has separate terms.
+**English** · [繁體中文](README.zh-TW.md)
 
-**授權：[程式碼 MIT](LICENSE) · [素材授權與來源](ASSET_LICENSES.md) · [參與方式](CONTRIBUTING.md)**
+Mistpaw is a playable single-level action RPG built with Godot 4.7.2 and GDScript. It combines fast keyboard combat, grouped enemy encounters, loot, relic builds, a multi-phase boss, and an HD-2D-inspired forest rendered from layered pixel art and 3D scenery.
 
-以 Godot 4.7.2／GDScript 製作的單關 ARPG MVP。探索青霧林，迎戰群怪與妖王，體驗高速戰鬥、法寶與掉落收取。支援桌面鍵盤操作與 Web 觸控試玩。
+Source version: **0.1.1** · [Play the Web demo](https://mistpaw.eighti.app/) (version 0.1.0; the desktop 0.1.1 lighting update is not deployed yet).
 
-原始碼版本：**0.1.1** · [線上試玩](https://mistpaw.eighti.app/)（0.1.0，尚未包含 0.1.1 光影更新）。
+The source code is licensed under MIT. Artwork, audio, fonts, logos, screenshots, and recordings have [separate terms](ASSET_LICENSES.md).
 
-- 完整單關：群怪、三段普攻、重劈、旋斬、閃躲、二段跳、三種法寶、掉落與收取、妖王多階段／破防、死亡重試。
-- 呈現：像素角色與 3D 森林／石橋／湖岸、場景及戰鬥光影、聲音、鍵盤與手機觸控 HUD。
+## Highlights
 
-[版本說明與驗證](docs/release-notes.md)
+- A complete single-level run with grouped enemies, three-hit basic combos, heavy attacks, spinning attacks, dodges, double jumps, three relic builds, loot collection, death, retry, and completion results.
+- A multi-phase boss with distinct attacks, frontal guard, guard break, stun windows, enrage behavior, and dedicated battle music.
+- Layered pixel characters in a 3D forest, stone bridge, and lakeside environment with combat lighting, tree shadows, water reflections, particles, and positional audio.
+- Manual keyboard combat on desktop and a landscape multi-touch HUD for the Web demo.
+- Scripted smoke, retry, atmosphere, geometry, full-route, and rendering benchmark checks.
 
-## 遊戲畫面與影片
+[Detailed release notes (Traditional Chinese)](docs/release-notes.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
-以下為 **0.1.1 桌面 Forward+ 最新實際畫面**，包含本版光影更新，未使用概念圖或 AI 後製。線上 Web 試玩仍為 0.1.0，畫質與桌面渲染有所不同。
+## Screenshots and gameplay
 
-[![青霧林與石橋湖面](docs/images/forest.png)](https://github.com/Chuanyin1202/mistpaw/releases/download/v0.1.1/mistpaw-demo.mp4)
+These are actual **0.1.1 desktop Forward+** frames with the current lighting update. They are not concept renders or AI-enhanced screenshots. The hosted Web demo uses an older build and the Compatibility renderer, so its visuals differ from these captures.
 
-**[觀看／下載完整含聲音影片（85.6 秒，720p60）](https://github.com/Chuanyin1202/mistpaw/releases/download/v0.1.1/mistpaw-demo.mp4)** · [Release](https://github.com/Chuanyin1202/mistpaw/releases/tag/v0.1.1)
+[![Mistpaw forest, bridge, and lake](docs/images/forest.png)](https://github.com/Chuanyin1202/mistpaw/releases/download/v0.1.1/mistpaw-demo.mp4)
 
-![群怪戰鬥與旋斬](docs/images/combat.png)
+**[Watch or download the full gameplay video with sound (85.6 seconds, 720p60)](https://github.com/Chuanyin1202/mistpaw/releases/download/v0.1.1/mistpaw-demo.mp4)** · [Release](https://github.com/Chuanyin1202/mistpaw/releases/tag/v0.1.1)
 
-![妖王戰鬥](docs/images/boss.png)
+![Grouped enemy combat and spinning attack](docs/images/combat.png)
 
-影片以正常輸入腳本完成整關，展示連段、重劈、旋斬、閃躲、二段跳、法寶與妖王破防，未修改生命或傷害規則。使用 Godot Movie Maker 固定模擬步長錄製並保留遊戲原聲；影片的 60fps 不代表實機效能測試結果。
+![Boss encounter](docs/images/boss.png)
 
-## 啟動
+The playthrough uses normal scripted inputs and completes the level with combos, heavy attacks, spins, dodges, double jumps, relics, and a boss guard break. Health and damage rules are unchanged. Godot Movie Maker records with a fixed simulation step and preserves the game audio; the video's 60 fps output is not a real-time performance benchmark.
 
-在 Finder 雙擊 [scripts/play.command](scripts/play.command)，或終端機執行：
+## Requirements
+
+- Godot **4.7.2**
+- macOS or another desktop platform supported by Godot 4
+- Web export templates matching the installed Godot version, only when building the Web demo
+
+The current release was validated on macOS with the Metal Forward+ renderer. Windows has not yet been tested on physical hardware.
+
+## Run locally
 
 ```sh
 git clone https://github.com/Chuanyin1202/mistpaw.git
@@ -40,29 +49,29 @@ godot --headless --editor --import --quit
 godot --path .
 ```
 
-需要編輯時使用 `godot --path . --editor`，或在 Godot 匯入 `project.godot` 後按 F5。首次啟動會匯入／預熱素材。桌面版以原生視窗執行，無需網頁伺服器。
+Use `godot --path . --editor` to open the editor, or import `project.godot` and press F5. The first launch imports and warms the bundled assets. On macOS, `scripts/play.command` can also launch the project from Finder.
 
-## 操作
+## Controls
 
-| 動作 | 按鍵 |
+| Action | Input |
 |---|---|
-| 移動／面向 | WASD／方向鍵，停止後保留面向 |
-| 普攻 | J，按住連段；沒有敵人也可出劍 |
-| 重劈／旋斬 | K／I，冷卻2.8／3.4秒 |
-| 閃躲 | L，0.18秒突進、1.1秒冷卻 |
-| 二段跳 | Space，空中再按一次 |
-| 跑步 | 同方向在0.16秒內雙按，第二下按住；不再觸發後跳 |
-| 法寶 | 1／2／3，取得後切換 |
-| 提前迎戰 | F |
-| 選單／靜音／重試 | Esc／M／R；結算亦可Enter |
+| Move / face | WASD or arrow keys; the last facing direction is retained |
+| Basic attack | J; hold to continue the combo, including without a target |
+| Heavy / spin | K / I; 2.8 / 3.4 second cooldown |
+| Dodge | L; 0.18 second dash, 1.1 second cooldown |
+| Double jump | Space, then Space again while airborne |
+| Run | Double-tap the same direction within 0.16 seconds and hold the second press |
+| Relic build | 1 / 2 / 3 after collecting each relic |
+| Start next encounter | F |
+| Menu / mute / retry | Esc / M / R; Enter also retries after a run |
 
-右側圓形技能區顯示動作、鍵位與冷卻，按鍵與按鈕使用相同動作入口。桌面預設純鍵盤手動；Esc保留自動普攻輔助。滑鼠位置不影響戰鬥方向。手機支援橫向搖桿、多點觸控與安全區佈局；請使用正式 HTTPS 網址測試。
+The desktop build defaults to manual keyboard combat. An optional automatic basic attack can be enabled from the Esc menu. Mouse position does not affect combat direction. The Web build includes a landscape virtual joystick, multi-touch action buttons, and safe-area layout.
 
-前三區各有三段遭遇：第一段取得法寶，後續改變站位與進場方向；戰間有 4 秒準備，可用 F 提前迎戰，掉落法寶需先收取。三戰完成後才觸發下一區遭遇，路面仍可自由往返。最後挑戰妖王，收齊四件法寶完成試煉。首次進入新區回復 20 點生命；生命歸零顯示倒下和重試。結算顯示用時、擊退數與承受傷害。
+The run contains three encounter regions followed by the boss. Each region varies enemy composition, formation, and entry direction. Relics must be collected before their builds become available. Entering a new region restores 20 health; reaching zero health shows a defeat and retry flow. The result screen reports completion time, enemies defeated, and damage taken.
 
-首次遊玩目標為 3–5 分鐘，尚待真人首玩量測；自動操作的通關時間不能當作真人遊玩時間。
+The intended first-play length is three to five minutes, but this has not yet been validated with a formal first-time-player study. Scripted completion time is not presented as human playtime.
 
-## 驗證與複用
+## Validation
 
 ```sh
 godot --headless --path . --editor --import --quit
@@ -74,37 +83,37 @@ godot --path . --script tests/route.gd
 godot --path . --script tests/quality_benchmark.gd
 ```
 
-場景對照、路線與效能測試的輸出放在忽略追蹤的 `build/verification/`，不作歷史文件保存。
+Generated logs and captures are written to the ignored `build/verification/` directory.
 
-可供下一個專案參考的部分：動作輸入與連段、命中反馈、敵人預告、掉寶光柱與收取、音效分層、觸控控制，以及 Godot 場景材質。這些仍是遊戲內模組，尚非可直接安裝的通用框架；實際需要時再抽取。
+Reusable implementation examples include action input, attack combos, contact-driven hit feedback, enemy telegraphs, loot beams and attraction, layered audio, touch controls, and environment materials. These remain game modules rather than a packaged framework.
 
-素材來源與雜湊在 `assets/provenance.json`，製作資料在 `assets/source`。遊戲執行不需要音訊或生圖 API 金鑰。素材製作紀錄中的外部來源不是執行依賴。
+Asset provenance and hashes are recorded in `assets/provenance.json`; production notes are under `assets/source/`. No image-generation or audio-service API key is required to run the game. External production sources referenced in metadata are not runtime dependencies.
 
-未列為本 MVP 完成條件：商業級美術、概念圖完全還原、多關卡、背包養成、手把、多人、原生 Android／iOS，以及 Windows 實機驗證。Web 與桌面渲染能力不同，不能宣稱完全同畫質。
+Current scope excludes multiple levels, inventory progression, gamepad support, multiplayer, native Android/iOS packaging, and verified Windows hardware support. The Web and desktop renderers do not provide identical visual quality.
 
-## Web 試玩
+## Build and serve the Web version
 
 ```sh
 ./web/export.sh
 python3 web/serve.py --root build/web --port 8095
 ```
 
-開啟 http://localhost:8095/。需要本機 Godot 4.7.2 與相同版本的 Web 單執行緒匯出模板，放在 `build/toolchain/`；匯出腳本會一起複製啟動 Logo。
+Open <http://localhost:8095/>. The export script expects the matching single-threaded Web templates under `build/toolchain/` and copies the custom launch logo into the output.
 
-桌面畫面以 1280×720 置中，較大視窗不放大，較小視窗等比例縮小。觸控手機的橫向畫布填滿瀏覽器可用區域，維持 720 渲染高度並延伸水平視野，不拉伸場景；直向提供完整載入頁，遊戲中轉直向會暫停並提示橫放。使用內附 Noto Sans TC Regular，中文字不依賴作業系統字型。Logo 為 `web/mistpaw-logo.png`，字型授權見 `assets/fonts/OFL.txt`。
+Desktop browsers center the 1280×720 game without upscaling and proportionally reduce it in smaller windows. Landscape phones retain a 720-pixel render height and extend horizontal view instead of stretching the scene. Portrait mode shows the complete loading screen and pauses active gameplay with a rotate-device prompt. The bundled Noto Sans TC font covers Traditional Chinese UI text.
 
-Web 預設精緻，但不等同桌面 Forward+：沒有體積霧、SSR 與景深模糊。使用相容渲染專用光照／湖水色彩校正；桌面原有設定保留。精緻與均衡在 Web 的效果相近，清晰會減少環境裝飾。
+The Web build defaults to the high visual preset but uses Godot's Compatibility renderer. It does not include desktop Forward+ volumetric fog, screen-space reflections, or depth-of-field blur. Compatibility-specific lighting and water color corrections are applied without changing the desktop settings.
 
-手機橫向試玩已加入左側搖桿持續推動加速與右側多指動作控制，手指可從普攻滑向閃躲／跳躍；放手、觸控取消、暫停及失焦會清除觸控狀態。39 項合成觸控輸入檢查通過（含法寶點選、持續推桿加速與帶正負號的觸控編號）。
+Mobile Web controls support multi-touch actions and sustained joystick running. Releasing a touch, cancellation, pause, or loss of focus clears held input state. The touch layer has 39 synthetic input checks covering relic selection, sustained running, and signed touch identifiers.
 
-手機必須使用 HTTPS；區網 HTTP 不符合引擎的 secure-context 啟動條件。可用 `cloudflared tunnel --url http://127.0.0.1:8095 --no-autoupdate` 建立暫時試玩網址。此暫時網址依賴本機伺服器與 Tunnel 程序；正式試玩請用 https://mistpaw.eighti.app/ 。Safari「分享 → 加入主畫面」後以 Web App 開啟可移除網址列；桌面保留 16:9 原尺寸；手機橫向透過延伸視野使用可用空間。
+Mobile browsers require HTTPS for the engine's secure-context checks. For temporary testing, expose the local server through an HTTPS tunnel. Safari users can add the site to the Home Screen to open it without the browser address bar.
 
-手機快跑：搖桿離開中心緩衝區（22%）並維持方向 0.35 秒後自動進入完整 7.2 單位／秒跑速，外圈顯示蓄速與快跑狀態；中心附近微動不會加速，反向、放鬆、取消觸控及暫停會解除。上下與斜向移動也支援加速。移除獨立快跑按鈕與手機雙推觸發，鍵盤雙按保持原樣。
+On touch devices, holding the joystick outside its 22% center dead zone for 0.35 seconds reaches the full 7.2-unit-per-second run speed. Direction reversal, releasing toward the center, cancellation, and pause reset the run state.
 
-### 自行部署
+### Self-hosting
 
-遊戲運算在玩家的瀏覽器執行；伺服器只提供靜態檔案。完成匯出後，將 `build/web/` 的完整內容部署到支援 HTTPS 的靜態網站服務，保留檔名與目錄結構。更換網域時，請同步修改 `web/shell.html`、`web/manifest.webmanifest` 與分享頁中對應的網站網址。
+The game runs in the player's browser; the server only provides static files. Deploy the complete `build/web/` directory to an HTTPS static host without changing its filenames or structure. When changing domains, update the site URL in `web/shell.html`, `web/manifest.webmanifest`, and the social sharing metadata.
 
-Linux 可參考 [systemd 服務範本](web/mistpaw-web.service)。範本假設已建立專用的 `mistpaw` 服務帳號，將 `web/serve.py` 放在 `/srv/mistpaw/serve.py`、匯出內容放在 `/srv/mistpaw/current/`；請依自己的主機設定調整帳號與路徑，並確保服務帳號有讀取權限。服務只監聽本機，對外需搭配 HTTPS 反向代理。
+Linux deployments can adapt the [systemd service example](web/mistpaw-web.service). It assumes a dedicated `mistpaw` service account, `web/serve.py` installed as `/srv/mistpaw/serve.py`, and exported files under `/srv/mistpaw/current/`. The example listens only on localhost and requires an HTTPS reverse proxy for public access.
 
-分享圖片為 `web/mistpaw-og.png`，Logo 為 `web/mistpaw-logo.png`。正式部署不要啟用診斷接收或包含測試用匯出檔。
+The social preview image is `web/mistpaw-og.png`, and the launch logo is `web/mistpaw-logo.png`. Production deployments should omit diagnostic exports and leave diagnostic collection disabled.
