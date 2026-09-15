@@ -1,3 +1,4 @@
+# Example only: create the mistpaw service user and adapt paths before installing.
 [Unit]
 Description=Mistpaw Web game assets
 After=network.target

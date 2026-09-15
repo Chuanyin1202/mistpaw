@@ -19,6 +19,9 @@ generated with ElevenLabs, and some was synthesized by project scripts.
 `assets/provenance.json` records available origins, generation/processing notes
 and hashes. A provenance entry is not itself a redistribution license. Entries
 referring to `../onepaw` describe the original local source, not a build dependency.
+Paths beginning with `external-source/` identify original production inputs that
+are not bundled; they are provenance labels, not runnable file paths. Absolute
+paths from the production machine have been removed.
 This notice makes no claim of exclusive copyright over AI-generated material.
 
 Code within `assets/source/` is MIT-licensed; the media it processes is not

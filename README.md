@@ -6,14 +6,14 @@ The source code is MIT-licensed; bundled media has separate terms.
 
 **授權：[程式碼 MIT](LICENSE) · [素材授權與來源](ASSET_LICENSES.md) · [參與方式](CONTRIBUTING.md)**
 
-ARPG MVP 實驗專案，青霧林單關的完整可玩流程已完成，本階段收尾，不再擴充玩法或追逐概念圖品質。Godot 4.7.2／GDScript，以桌面高速動作刷寶為主，Web 提供試玩。
+以 Godot 4.7.2／GDScript 製作的單關 ARPG MVP。探索青霧林，迎戰群怪與妖王，體驗高速戰鬥、法寶與掉落收取。支援桌面鍵盤操作與 Web 觸控試玩。
 
+原始碼版本：**0.1.1** · [線上試玩](https://mistpaw.eighti.app/)（0.1.0，尚未包含 0.1.1 光影更新）。
 
 - 完整單關：群怪、三段普攻、重劈、旋斬、閃躲、二段跳、三種法寶、掉落與收取、妖王多階段／破防、死亡重試。
 - 呈現：像素角色與 3D 森林／石橋／湖岸、場景及戰鬥光影、聲音、鍵盤與手機觸控 HUD。
-- 本輪保留：路面朝向與樹影修正、新石板素材／薄石板幾何、遠景、水波與桌面抗鋸齒；降低過強補光與霧氣，加強揚塵及接地陰影。
 
-[版本說明與驗證](docs/release-notes.md) · [完整含聲音展示](docs/mistpaw-final-gameplay.mp4) · [動作展示](docs/mistpaw-action-demo.mp4)。影片屬於先前驗收版，不代表本地最新光影。
+[版本說明與驗證](docs/release-notes.md)
 
 ## 啟動
 
@@ -26,7 +26,7 @@ godot --headless --editor --import --quit
 godot --path .
 ```
 
-需要編輯時使用 `godot --path . --editor`，或在 Godot 匯入 `project.godot` 後按 F5。首次啟動會匯入／預熱素材。遊戲是原生視窗，無需網頁伺服器、不使用 5173／5174。
+需要編輯時使用 `godot --path . --editor`，或在 Godot 匯入 `project.godot` 後按 F5。首次啟動會匯入／預熱素材。桌面版以原生視窗執行，無需網頁伺服器。
 
 ## 操作
 
@@ -64,7 +64,7 @@ godot --path . --script tests/quality_benchmark.gd
 
 可供下一個專案參考的部分：動作輸入與連段、命中反馈、敵人預告、掉寶光柱與收取、音效分層、觸控控制，以及 Godot 場景材質。這些仍是遊戲內模組，尚非可直接安裝的通用框架；實際需要時再抽取。
 
-素材來源與雜湊在 `assets/provenance.json`，製作資料在 `assets/source`。遊戲執行不需要音訊或生圖 API 金鑰。`../onepaw` 保持獨立。
+素材來源與雜湊在 `assets/provenance.json`，製作資料在 `assets/source`。遊戲執行不需要音訊或生圖 API 金鑰。素材製作紀錄中的外部來源不是執行依賴。
 
 未列為本 MVP 完成條件：商業級美術、概念圖完全還原、多關卡、背包養成、手把、多人、原生 Android／iOS，以及 Windows 實機驗證。Web 與桌面渲染能力不同，不能宣稱完全同畫質。
 
@@ -87,7 +87,10 @@ Web 預設精緻，但不等同桌面 Forward+：沒有體積霧、SSR 與景深
 
 手機快跑：搖桿離開中心緩衝區（22%）並維持方向 0.35 秒後自動進入完整 7.2 單位／秒跑速，外圈顯示蓄速與快跑狀態；中心附近微動不會加速，反向、放鬆、取消觸控及暫停會解除。上下與斜向移動也支援加速。移除獨立快跑按鈕與手機雙推觸發，鍵盤雙按保持原樣。
 
+### 自行部署
 
+遊戲運算在玩家的瀏覽器執行；伺服器只提供靜態檔案。完成匯出後，將 `build/web/` 的完整內容部署到支援 HTTPS 的靜態網站服務，保留檔名與目錄結構。更換網域時，請同步修改 `web/shell.html`、`web/manifest.webmanifest` 與分享頁中對應的網站網址。
 
+Linux 可參考 [systemd 服務範本](web/mistpaw-web.service)。範本假設已建立專用的 `mistpaw` 服務帳號，將 `web/serve.py` 放在 `/srv/mistpaw/serve.py`、匯出內容放在 `/srv/mistpaw/current/`；請依自己的主機設定調整帳號與路徑，並確保服務帳號有讀取權限。服務只監聽本機，對外需搭配 HTTPS 反向代理。
 
-OG 採用開場 Logo 與背景，1200×630 分享圖為 `web/mistpaw-og.png`；排版來源 `web/og-card.html`。OG、Twitter large image 與 canonical 都指向正式網域。正式服務不啟用診斷接收；本機追查時須用伺服器 `--diagnostics` 搭配網址 `?touch_probe=1`。
+分享圖片為 `web/mistpaw-og.png`，Logo 為 `web/mistpaw-logo.png`。正式部署不要啟用診斷接收或包含測試用匯出檔。
