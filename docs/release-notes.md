@@ -1,23 +1,36 @@
-# Mistpaw 0.1.0
+# Mistpaw 0.1.1 — ARPG MVP 收尾
 
-Mistpaw is a single-level HD-2D-inspired action RPG demo set in the misty Qingwu Forest.
+青霧林單關 MVP 實驗完成。本階段保留可玩流程與已驗證的技術成果，停止擴充範圍。桌面使用 Godot 4.7.2／Metal Forward+。
 
-The release includes a complete playable route from the opening forest encounters to the forest boss, with keyboard controls on desktop and touch controls on mobile Web. Combat includes manual combo attacks, heavy attacks, spinning attacks, dodges, double jumps, three relic styles, enemy groups, loot collection, boss attack patterns, guard break, music changes, and a retry result screen.
+## 保留的成果
 
-The desktop build targets Godot 4.7.2 with Metal Forward+. The Web build uses the compatibility renderer and is hosted at [mistpaw.eighti.app](https://mistpaw.eighti.app/). The Web version runs game logic on the player's device; the Pi5 only serves the files through HTTPS.
+- 鍵盤高速動作：普攻連段、重劈、旋斬、閃躲、二段跳、三種法寶、命中反饋與音效。
+- 群怪遭遇、掉落收取、妖王多種招式／狂怒／破防、死亡與重試完整流程。
+- 場景遠景、薄石板幾何與材質、湖面波紋／反射、景深調整與桌面 4× MSAA。
+- 修正路面三角形朝向與樹木陰影通道中的朝向差異。
 
-The final showcase recordings are kept beside this document for review. Intermediate screenshots, frame captures, probes, logs, and superseded recordings are intentionally excluded from the release workspace.
+## 收斂的光影
 
-## Local visual update — not deployed
+- 主日光統一直射光、投影、湖面日光反射與霧中散射；取消方向不同的聚光燈及未綁定可見樹木的投影平面。
+- 樹影由實際可見樹木的透明輪廓產生，跟隨日照方向與高度。樹木仍是 2.5D 平面素材，並非完整體積的 3D 樹冠。
+- 降低正面補光與霧氣；補光不產生鏡面反射，避免第二個反光方向。
+- 提高接地陰影與奔跑灰塵的對比，保留既有生成頻率與回收機制。
 
-The `feat/sunlit-forest` branch adds a sunlit distant forest layer, warmer direct light with cool ambient fill, moving alpha-tested canopy shadows, stone surface relief and wetness, revised water ripples/reflections, and reduced depth-of-field blur. Native rendering uses 4× MSAA; Web retains its existing renderer and disables MSAA. The distant forest is generated artwork; shadows, surface lighting, water and volumetric atmosphere are rendered by Godot.
+## 驗證
 
-The wide terrace previously had reversed triangle winding, hiding its intended surface. Its front faces now point upward. The thin surface receives shadows while the solid terrace underneath casts them, avoiding Compatibility self-shadow bands.
+2026-09-15 本地收尾檢查：
 
-The follow-up material pass adds generated irregular flagstone albedo and a single shallow bevelled paving mesh per bank. Slab faces have real edge normals and varied roughness; all relief stays between 0.062 and 0.105 world units, with no added collision. Foliage now uses the main camera orientation in both visible and shadow passes, removing the diagonal self-shadow cuts. Sunlight comes from behind the bank to reflect toward the camera, with soft front fill to preserve actor readability. Water keeps dynamic wave normals and screen-space reflections; an experimental cached probe was discarded after it produced visible reflection blocks.
+- 核心戰鬥 smoke 16 項、死亡／重試 7 項、環境粒子 7 項通過。
+- 實際跑步診斷：同一路徑仍生成最多 14 個非環境灰塵粒子；接地陰影高度 0.14，高於石板最高 0.105，沒有被埋住。
+- 光影診斷：原本光束與日光相差 14.35°；收尾後場景僅有 1 個主投影光源、0 個獨立陰影平面。日光方向為 `(0.469846, -0.573576, 0.671010)`。
+- Apple M4、1280×720 敵群特效測試：精緻模式幀間隔中位數 16.68 ms、p95 17.12 ms、最大 19.72 ms；三種模式 p95 均低於 19.1 ms。清晰模式出現單次 105.61 ms 尖峰，不能宣稱全程無卡頓。
+- Forward+ 與 Compatibility 的實際畫面已檢查。這不是新版本在手機瀏覽器的效能保證。
 
-Validation on Apple M4 at 1280×720: the scripted full combat route completed with all four pickups and boss phases; frame interval median 16.67 ms, p95 17.99 ms, maximum 36.56 ms. A subsequent crowded-effects benchmark across all three quality profiles measured medians near 16.7 ms and p95 below 18.2 ms. These are local scripted measurements, not mobile/browser performance guarantees. All seven atmosphere lifecycle checks passed. Fixed-camera Forward+ and Compatibility renders were inspected; screenshots and benchmark outputs stay under ignored `build/verification/`.
+之前已通過完整腳本通關與石板幾何 10 項檢查。驗證畫面、探針與日誌留在忽略追蹤的 `build/verification/`，不保存為歷史文件。
 
-After the follow-up paving pass, the final crowded-effects benchmark measured 16.67 ms median / 17.86 ms p95 on the finest profile, and p95 below 18.2 ms for all profiles. Ten geometry checks passed for bounds, upward normals, vertex budget, deterministic layout and absence of collision bodies. Shader implementation references: [Godot spatial shader camera matrices](https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/spatial_shader.html).
+## 版本邊界
 
-This update improves the reference's lighting hierarchy, but does not reproduce the AI concept's geometric density or every reflection. The production URL and published recordings still show version 0.1.0.
+
+Web 使用 Compatibility，沒有桌面 Forward+ 的 SSR、體積霧和景深效果。Windows 實機、原生 Android／iOS、手把、多人、多關卡與養成系統不屬於本 MVP 完成範圍。概念圖的幾何密度與自然倒影亦未完全達到，不以商業成品品質作結。
+
+啟動、操作與部署步驟見 [README](../README.md)。素材來源見 `assets/provenance.json`。下一個專案可按需要複用動作、掉寶、音效及控制模組，無須現在抽象成通用框架。

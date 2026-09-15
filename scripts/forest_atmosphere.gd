@@ -49,7 +49,7 @@ func emit(at:Vector3,velocity:Vector3,leaf:bool,ambient:bool,life:float,size:flo
  p.node.rotation=Vector3(-0.25,0,rng.randf_range(-PI,PI) if leaf else 0)
  p.node.scale=Vector3.ONE*size
  p.mat.set_shader_parameter("leaf",leaf)
- p.mat.set_shader_parameter("tint",Color(0.62,0.48+rng.randf()*0.14,0.22,0.8) if leaf else (Color(0.94,0.85,0.64,0.65) if ambient else Color(0.55,0.52,0.42,0.35)))
+ p.mat.set_shader_parameter("tint",Color(0.62,0.48+rng.randf()*0.14,0.22,0.8) if leaf else (Color(0.94,0.85,0.64,0.65) if ambient else Color(0.34,0.30,0.24,0.52)))
  p.mat.set_shader_parameter("opacity",0.0)
  p.node.show()
 func disturb(at:Vector3,strength:float):

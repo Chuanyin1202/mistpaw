@@ -119,11 +119,11 @@ func _ready() -> void:
 	add_child(world_environment)
 	var sun := DirectionalLight3D.new()
 	sun.name = "ForestSun"
-	sun.rotation_degrees = Vector3(-52, -145, 0)
+	sun.rotation_degrees = Vector3(-35, -145, 0)
 	sun.light_color = Color("fff0d2")
 	sun.light_energy = 1.0 if compatibility else 1.7
 	sun.shadow_enabled = true
-	sun.light_volumetric_fog_energy = 0.7
+	sun.light_volumetric_fog_energy = 1.2
 	sun.directional_shadow_max_distance = 65.0
 	sun.shadow_blur = 1.5
 	sun.shadow_bias = 0.15 if compatibility else 0.1
@@ -134,37 +134,23 @@ func _ready() -> void:
 	bounce.name = "ForestSkyBounce"
 	bounce.rotation_degrees = Vector3(-35,-30,0)
 	bounce.light_color = Color("c7dcdf")
-	bounce.light_energy = 0.65 if compatibility else 0.95
+	bounce.light_energy = 0.38 if compatibility else 0.55
 	bounce.light_volumetric_fog_energy = 0.0
 	bounce.shadow_enabled = false
+	bounce.light_specular = 0.0
 	add_child(bounce)
-	# Sun breaks through a canopy opening; actual lights illuminate the bridge
-	# and scatter in localized air, instead of screen-space decorative streaks.
+	# One sunlight direction drives surface shadows and volumetric scattering.
+	# Visible foliage is the occluder; there are no detached shadow planes.
 	if not compatibility:
 		var air := FogVolume.new()
 		air.name = "BridgeAir"
 		air.size = Vector3(78,14,12)
 		air.position = Vector3(24,4,-8)
 		var mist := FogMaterial.new()
-		mist.density = 0.024
+		mist.density = 0.016
 		mist.albedo = Color("c5dadd")
 		air.material = mist
 		add_child(air)
-	for opening in [Vector3(5,13,-5),Vector3(18,15,-8),Vector3(31,14,-7),Vector3(45,15,-8)]:
-		var ray := SpotLight3D.new()
-		ray.position = opening
-		ray.spot_range = 30
-		ray.spot_angle = 15 if opening.x < 10 else 12
-		ray.spot_angle_attenuation = 1.4
-		ray.light_color = Color("ffe8b8")
-		ray.light_energy = (28.0 if opening.x < 10 else 18.0) * (0.70 if compatibility else 1.0)
-		ray.light_volumetric_fog_energy = 6.0
-		ray.shadow_enabled = true
-		ray.shadow_bias = 0.1
-		ray.shadow_normal_bias = 2.0
-		ray.light_size = 0.35
-		add_child(ray)
-		ray.look_at(opening+Vector3(8,-15,5))
 	var stone := ShaderMaterial.new()
 	stone.shader = preload("res://shaders/sunlit_stone.gdshader")
 	stone.set_shader_parameter("stone_texture",preload("res://assets/art/ancient-masonry.png"))
@@ -330,23 +316,6 @@ func _ready() -> void:
 			leaves.set_shader_parameter("sway",0.035 if child.texture==TEXTURES["forest-ferns.png"] else 0.085)
 			foliage_materials[key]=leaves
 		child.material_override=foliage_materials[key]
-	# Offscreen canopy geometry casts real moving, alpha-tested shadows.
-	# These meshes only enter the shadow pass; the existing visible trees remain.
-	var canopy_shadow:=ShaderMaterial.new()
-	canopy_shadow.shader=preload("res://shaders/canopy_shadow.gdshader")
-	canopy_shadow.set_shader_parameter("canopy",TEXTURES["ancient-cedar.png"])
-	for x in [-7.0,4.0,26.0,36.0,48.0,58.0]:
-		var shade:=MeshInstance3D.new()
-		shade.name="CanopyShade"
-		var crown:=PlaneMesh.new()
-		crown.size=Vector2(10,8)
-		shade.mesh=crown
-		# The sun comes from behind the bank, projecting crown shadows
-		# forward across the terrace and reflecting toward the camera.
-		shade.position=Vector3(x-3.0,8.0,-5.0)
-		shade.material_override=canopy_shadow
-		shade.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
-		add_child(shade)
 
 func follow_camera(x: float) -> void:
 	get_node("Distance").position.x = 3 + (x - 3) * 0.94
