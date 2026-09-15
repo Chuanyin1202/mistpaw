@@ -15,6 +15,20 @@ The source code is MIT-licensed; bundled media has separate terms.
 
 [版本說明與驗證](docs/release-notes.md)
 
+## 遊戲畫面與影片
+
+以下為 **0.1.1 桌面 Forward+ 最新實際畫面**，包含本版光影更新，未使用概念圖或 AI 後製。線上 Web 試玩仍為 0.1.0，畫質與桌面渲染有所不同。
+
+[![青霧林與石橋湖面](docs/images/forest.png)](https://github.com/Chuanyin1202/mistpaw/releases/download/v0.1.1/mistpaw-demo.mp4)
+
+**[觀看／下載完整含聲音影片（85.6 秒，720p60）](https://github.com/Chuanyin1202/mistpaw/releases/download/v0.1.1/mistpaw-demo.mp4)** · [Release](https://github.com/Chuanyin1202/mistpaw/releases/tag/v0.1.1)
+
+![群怪戰鬥與旋斬](docs/images/combat.png)
+
+![妖王戰鬥](docs/images/boss.png)
+
+影片以正常輸入腳本完成整關，展示連段、重劈、旋斬、閃躲、二段跳、法寶與妖王破防，未修改生命或傷害規則。使用 Godot Movie Maker 固定模擬步長錄製並保留遊戲原聲；影片的 60fps 不代表實機效能測試結果。
+
 ## 啟動
 
 在 Finder 雙擊 [scripts/play.command](scripts/play.command)，或終端機執行：
