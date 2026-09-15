@@ -3,6 +3,11 @@ build/
 *.log
 .DS_Store
 __pycache__/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
 
 # Large locally generated demo recordings stay outside the source snapshot.
 docs/*.mp4

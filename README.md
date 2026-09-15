@@ -1,5 +1,11 @@
 # Mistpaw／霧爪
 
+A playable single-level Godot ARPG experiment: keyboard combat, combo attacks,
+double jumps, dodges, grouped enemies, loot, boss phases and HD-2D-inspired scenery.
+The source code is MIT-licensed; bundled media has separate terms.
+
+**授權：[程式碼 MIT](LICENSE) · [素材授權與來源](ASSET_LICENSES.md) · [參與方式](CONTRIBUTING.md)**
+
 ARPG MVP 實驗專案，青霧林單關的完整可玩流程已完成，本階段收尾，不再擴充玩法或追逐概念圖品質。Godot 4.7.2／GDScript，以桌面高速動作刷寶為主，Web 提供試玩。
 
 
@@ -14,7 +20,9 @@ ARPG MVP 實驗專案，青霧林單關的完整可玩流程已完成，本階�
 在 Finder 雙擊 [scripts/play.command](scripts/play.command)，或終端機執行：
 
 ```sh
-cd .
+git clone https://github.com/Chuanyin1202/mistpaw.git
+cd mistpaw
+godot --headless --editor --import --quit
 godot --path .
 ```
 
